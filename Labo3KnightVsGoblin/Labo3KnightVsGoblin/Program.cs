@@ -1,4 +1,85 @@
-﻿/* 
+﻿using System.ComponentModel.Design;
+
+Console.WriteLine("welcome to Knight vs Goblin)");
+Console.WriteLine("-------------");
+Console.WriteLine("enter knight health: ");
+string input = Console.ReadLine();
+
+Random randomNummerGenerator = new Random();
+
+int knightHealth;
+if (int.TryParse(input, out knightHealth))
+{
+    Console.WriteLine("invalid number, default value 100 is used");
+    knightHealth = 100;
+}
+
+int goblinhealth = randomNummerGenerator.Next(1, 101);
+Console.WriteLine($"knight health:  + {knightHealth}");
+Console.WriteLine($"goblin health:  + {goblinhealth}");
+
+//for (int attempts = 1; attempts <= 4;  attempts++)
+do
+{
+    //Console.WriteLine($"ronde {attempts}");
+    int attackKnight = 10;
+    int attackGoblin = 5;
+
+    Console.WriteLine("chose an action");
+    Console.WriteLine("1.attack");
+    Console.WriteLine("2. heal);");
+    string selectAction = Console.ReadLine();
+
+    switch (selectAction)
+    {
+        case "1":
+            goblinhealth -= knightHealth;
+            Console.WriteLine($"you attack the goblin for{knightattack} damage!");
+            break;
+        case "2":
+            knightHealth -= attackKnight;
+            Console.WriteLine("you heald yourself for 10 health points!");
+            break;
+        default:
+            Console.WriteLine("invalid move! please choose a valid move");
+            break;
+
+    }
+
+    if (knightHealth <= 0)
+    {
+        Console.WriteLine("you have died");
+    }
+
+    else
+    {
+        Console.WriteLine($"knight health: + {knightHealth}");
+    }
+
+    if (goblinhealth <= 0)
+    {
+        Console.WriteLine(" the goblin has died");
+    }
+
+    else
+    {
+        Console.WriteLine($"goblin health: + {goblinhealth}");
+    }
+} while (knightHealth > 0 && goblinhealth > 0);
+
+
+
+
+
+
+
+  
+
+
+
+
+
+/* 
  * Deel 1
  * 
  * We gaan een applicatie maken waarin de speler als ridder tegen een goblin moet vechten.
